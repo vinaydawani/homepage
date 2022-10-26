@@ -19,9 +19,8 @@ jobs:
 
       - name: 💻 Set Environment Variables
         run: |
-          OWNER="$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')"
           echo "BUILD_DATE=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
-          echo "IMAGE=ghcr.io/${OWNER}/${{ env.IMAGE_NAME }}" >> $GITHUB_ENV
+          echo "IMAGE=ghcr.io/${{ env.IMAGE_NAME }}" >> $GITHUB_ENV
           echo "GIT_SHA=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_ENV
           echo "GIT_REF=$(git symbolic-ref -q --short HEAD || git describe --tags --exact-match)" >> $GITHUB_ENV
 
